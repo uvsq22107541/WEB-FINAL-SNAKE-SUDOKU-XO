@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/css/XO.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/public/background/manette.png">
+    <title>X/O</title>
+</head>
+
+<body>
+    <!-- Navbar Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="/public/background/manette.png" alt="" width="40" height="40" class="d-inline-block align-text-middle">
+                MINI JEUX</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="gamesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Jeux
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/games/XO">XO</a></li>
+                            <li><a class="dropdown-item" href="/games/Sudoku">Sudoku</a></li>
+                            <li><a class="dropdown-item" href="/games/Snake">Snake</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-12 col-md-6 offset-md-3">
+
+                <!--- Box affichant le tour du Joueur --->
+                <div class="alert d-none" role="alert" id="annonce"></div>
+
+                <!--- Box pour remplir les informations du Joueur --->
+                <div class="card mb-3" id="user-card">
+                    <div class="card-body">
+
+                        <form method="POST" id="Pseudoform">
+                            <div class="mb-3">
+                                <h5 class="card-header">
+                                    CONNEXION
+                                    <img src="/public/background/utilisateur.png" alt="" width="40" height="40" class="d-inline-block align-text">
+                                </h5>
+                                <label for="username" class="form-label">Pseudo</label>
+                                <input type="text" class="form-control" id="username" minlength="2" maxlength="20"
+                                    placeholder="Saisir votre Pseudo" required autocomplete="off">
+                            </div>
+                            <button class="btn btn-primary" id="start" type="submit">Créer un salon</button>
+                        </form>
+
+                    </div>
+                </div>
+
+                <!--- Box affichant la liste des salons --->
+                <div class="card mb-3 d-none" id="rooms-card">
+                    <div class="card-header">LISTE DES SALONS</div>
+                    <ul class="list-group list-group-numbered" id="rooms-list"></ul>
+                </div>
+
+                <!--- Box affichant le cercle de chargement + lien d'invitation --->
+                <div class="d-none" id="waiting-area">
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Bravo !</h4>
+                        <p>Le salon est bien créer, désormais il faut qu'un <strong>deuxième Joueur </strong>rejoigne la partie.</p>
+                        <hr>
+
+                        <div class="card mb-3" id="waiting-room">
+                            <div class="card-header">ATTENTE D'UN AUTRE JOUEUR</div>
+                            <div class="card-body mx-auto">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                      </div>
+
+                    <div class="card" id="link-card">
+                        <div class="card-header">PARTAGE CE LIEN A TON AMI</div>
+                        <div class="card-body text-center">
+                            [Lien d'invitation]
+                            <span id="link-to-share"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--- Box du Jeux --->
+                <div class="card d-none align-text-middle" id="game-card">
+                    <div class="card-header">
+                        PLATEAU DE JEUX
+                    </div>
+                    <div class="card-body mx-auto">
+                        <table class="board">
+                            <tr>
+                                <!--- 1ère ligne de la grille --->
+                                <td class="case" id="case-1-1"></td>
+                                <td class="case" id="case-1-2"></td>
+                                <td class="case" id="case-1-3"></td>
+                            </tr>
+
+                            <tr>
+                                <!--- 2ème ligne de la grille --->
+                                <td class="case" id="case-2-1"></td>
+                                <td class="case" id="case-2-2"></td>
+                                <td class="case" id="case-2-3"></td>
+                            </tr>
+
+                            <tr>
+                                <!--- 3ème ligne de la grille --->
+                                <td class="case" id="case-3-1"></td>
+                                <td class="case" id="case-3-2"></td>
+                                <td class="case" id="case-3-3"></td>
+                            </tr>
+                        </table>
+                    </div>
+            
+                    <section class="controls">
+                        <button id="regle">REGLE</button>
+                        <div id="overlay">
+                            <div id="popup">
+                                <h1>
+                                    Règle et But du XO game
+                                    <span id="close">&times;</span>
+                                </h1>
+                                <h2>[ Règle ]</h2>
+                                <p>C'est un jeu composé de 2 joueurs.</p>
+                                <p>Le jeu est au tour par tour.</p>
+                                <p>Un joueur peut jouer que sur une case vide.</p>
+                                <h3>[ But ]</h3>
+                                <p>Le but du jeu est d'aligné 3 même logos ('X' ou 'O').</p>
+                                <p>Cela peut s'effectuer selon :</p>
+                                <p>les lignes / colonnes / ou diagonales.</p>
+                            </div>
+                        </div>
+                    </section>    
+
+                </div>
+
+                <div class="text-center d-none mt-2" id="restart-area">
+                    <input class="btn btn-primary" id="restart" type="button" value="Rejouer">
+                </div>
+
+                <!--- Box-Chat --->
+                <div class="d-none" id="button-chat">
+                    <img class="d-none" src="/public/background/notification.png" alt="" width="50" height="50" id="notification"> 
+                    <button class="d-none" id="button-box">CHAT</button>  
+                </div>
+
+                <div class="box-chat d-none" id="box">
+                    <div class="header">
+                        <h1>
+                            Box Chat
+                            <img src="/public/background/discussion.png" alt="" width="40" height="40" class="d-inline-block align-text">
+                            <button id="box-close">-</button>
+                        </h1>
+                    </div>
+
+                    <div class="body" id="messages"></div>
+
+                    <div class="footer">
+                        <form method="post" id="Msgform">
+                            <input type="text" id ="message" placeholder="Entrez votre message" autocomplete="off">
+                            <select name="receiver" id="receiverInput">
+                                <option value="all">A tous</option>
+                                <% users.forEach(user => { %>
+                                    <option value="<%= user.pseudo %>"><%= user.pseudo %></option>
+                                <% }); %> 
+                            </select>
+                            <input type="submit" id="btnSend" value="Envoyer">
+                        </form>
+                    </div>
+                    
+                </div>               
+
+                <!--- Tableau des Joueurs enregistré --->
+                <table class="table table-sm table-responsive table-primary table-striped table-hover table-bordered d-none" id="table-player">
+                    <thead>
+                    <tr>
+                        <th scope="col">JOUEUR N°</th>
+                        <th scope="col">PSEUDO</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <% users.forEach(function(users,index) { %>
+                    <tr>
+                        <th scope="row" value="<%= index %>"><%= index %></th>
+                        <td value="<%= users.pseudo %>"><%= users.pseudo %></td>
+                    </tr>
+                    <% }); %> 
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" data-bs-backdrop="static" id="modal1">
+            
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Information Pseudo
+                        </h5>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" aria-describedby="content" id="message-modal">
+                        <p>
+                            Votre pseudo à été modifié car il y a déjà un joueur qui possède
+                            ce pseudo.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button class="btn btn-primary" data-bs-dismiss="modal">J'ai compris</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Modal2 -->
+        <div class="modal fade" data-bs-backdrop="static" id="modal2">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Informations importantes
+                        </h5>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" aria-describedby="content" id="message-modal">
+                        <p>
+                            <strong> Si vous êtes dans une partie et que vous:</strong> <br>
+                            <br>* quittez la partie
+                            <br>* changez de jeux en cours de partie
+                            <br>* actualisez la page <br>
+                            <br>Il vous sera <strong>IMPOSSIBLE</strong> de rejoindre à nouveau ce <strong>MÊME</strong> salon.
+                            De ce fait, proposé à votre adversaire de refaire une partie.
+                        </p>
+
+                        <p>
+                            <strong> Tips : </strong> <br>
+                            <br>* Seul <strong>l'hôte</strong> de la partie possède le bouton 'Rejouer' lorsqu'une partie se termine.
+                            <br>* La <strong>BoxChat</strong> vous permet de communiquer avec tous les joueurs connectés.
+                            Il est possible d'envoyer des messages privés à son adversaire ou autres joueurs.
+                        </p>
+
+                        <p>Amusez-vous bien !</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                        <button class="btn btn-primary" data-bs-dismiss="modal">J'ai compris</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Modal3 -->
+        <div class="modal fade" data-bs-backdrop="static" id="modal3">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Vous êtes <strong>seul</strong> dans ce salon
+                        </h5>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" aria-describedby="content" id="message-modal">
+                        <p>
+                            <br>Votre adversaire à <strong>quitté</strong> la partie.<br>
+                            <br>Nous vous conseillons de revenir à l'accueil :<br>
+                            <br>* Pour <strong>changer</strong> de jeux.
+                            <br>* Ou <strong>créer/rejoindre</strong> un salon de Morpion.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/" class="btn btn-secondary" role="button">Revenir à l'accueil</a>
+                        <a href="/games/XO" class="btn btn-primary" role="button">Page de connexion X/O</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Modal4 -->
+        <div class="modal fade" data-bs-backdrop="static" id="modal4">
+
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Choix <strong>symbole</strong>
+                        </h5>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" aria-describedby="content" id="message-modal">
+                        <p>
+                            <br>Notre plateforme vous propose <strong>4 symboles</strong>:<br>
+                            <br>* Le symbole <strong>pique</strong> &spades;.
+                            <br>* Le symbole <strong>trèfle</strong> &clubs;.
+                            <br>* Le symbole <strong>coeur</strong> &hearts;.
+                            <br>* Le symbole <strong>carreau</strong> &diams;.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" id="piquebtn">Pique</button>
+                        <button class="btn btn-primary" data-bs-dismiss="modal" id="treflebtn">Trèfle</button>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" id="coeurbtn">Coeur</button>
+                        <button class="btn btn-primary" data-bs-dismiss="modal" id="carreaubtn">Carreau</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/public/js/XO.js"></script>
+
+</body>
+
+</html>
