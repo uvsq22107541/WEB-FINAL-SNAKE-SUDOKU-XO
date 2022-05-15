@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap');
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Chalkduster', fantasy;
+    font-style: oblique;
+    scroll-behavior: smooth;
+}
+
+body{
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient(#79a7d3,#8a307f);
+    scroll-behavior: smooth;
+}
+
+.navbar-expand-lg {
+    background-color: #6883bc;
+}
+
+#text {
+    font-family: 'Bungee Shade', cursive;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+	text-align: center;
+	font-weight: normal;
+	width: 100%;
+	text-align: center;
+	
+	font-size: 14vw;
+	background: linear-gradient(
+		-45deg, 
+		#4d878b 25%, 
+		#302020 25%, 
+		#302020 50%, 
+		#4d878b 50%, 
+		#4d878b 75%, 
+		#302020 75%, 
+		#302020);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-size: 20px 20px;
+	background-position: 0 0;
+	animation: stripes 1s linear infinite;
+}	
+
+@keyframes stripes {
+	100% { 
+		background-position: 20px 0, 20px 0, 20px 0;
+	}
+}
+
+#btn{
+    border-radius: 40px;
+    background: #fff;
+    color: #2b1055;
+    font-size: 2em;
+}
+
+#btn:hover {
+    background-color: #6883bc;
+}
+
+.sec{
+    position: relative;
+    padding: 100px;
+    background: linear-gradient(to top left, #8a307f,#79a7d3);
+}
+
+.sec h2{
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #fff;
+    text-decoration:wavy;
+    text-align: center;
+}
+
+.sec p{
+    font-size: 1em;
+    color: #1c0522;
+}
+
+.card-group img{
+    width: 450px;
+    height: 450px;
+    align-items: center;
+}
+
+.border-primary {
+    border-radius: 15px;
+}

@@ -1,0 +1,125 @@
+.hidden {  
+    display: none; /* anything with the hidden class will not display anything*/
+    }
+
+body.dark {
+    background: whitesmoke;
+    /*color: white;*/
+}
+
+header {
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightcoral;
+}
+
+body{
+    background: linear-gradient(to top left, #8a307f,#79a7d3);
+    font-family: 'Chalkduster', fantasy;
+    font-style: oblique;
+}
+
+h1 {
+    font-size: 45pt; 
+}
+
+#setup-game {
+    display: flex;
+     justify-content: center;
+}
+
+#setup-game > * { /*to modify the children of setup game*/
+    margin-bottom: 10px; /* give space between these parameters and button below*/
+    padding-left: 50px;
+    padding-right: 50px;
+    display: flex;
+    align-items: center;
+}
+
+button {
+    justify-self: center;
+}
+
+p#timer ,  p#lives { /*affect the 2 item that have id=timer and id=lives*/
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#game { 
+display: flex;
+justify-content: center;
+}
+
+* {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+*:before,
+*:after {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+#number-container > p { /*modify each of the tiles in the number container*/
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 60px;
+    height: 60px;
+    font-size: 35pt;
+    margin-left: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+#board {
+    padding-top: 10px;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    width: 600px; /*not individual tiles gonna be 600 but the entire board that make up all of our individual tiles*/
+    height: 600px;
+   
+}
+
+.tile { /*we will add the tile class to all 81 individual tiles inside the board */
+    border: 1px solid black;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    margin: 0px; /*bcz we don't wanna sapce btw them */
+    vertical-align: middle;
+    font-size: 35pt;
+}
+
+p.selected { /*after we select the tile*/
+    background-color: lightblue;
+}
+
+p.incorrect { /*change the text into red if we click the rong tile*/
+    color: red;
+}
+
+.rightBorder { /*add a thicker border around the grid, it breaks it up into nine three by three boxes so we have to pay attention to each individual grid so i made those thicker lines just to make it a little simpler for the player to see what's is going on*/
+     border-right: 4px solid black;
+}
+
+.bottomBorder { /*every  tile has a bottomborder (bl js bi alb lgenerateBoard fuction) 3tynhn 4px */
+    border-bottom: 4px solid black;
+}
+
+footer {
+    background-color: lightgray;
+    text-align: center;
+}
+
+/* STYLE Bootstrap */
+/* Barre de navigation */
+.navbar-expand-lg {
+    background-color: #6883bc;
+}
