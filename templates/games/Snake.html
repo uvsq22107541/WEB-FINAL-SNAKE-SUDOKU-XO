@@ -1,0 +1,78 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <!-- On appelle le framework phaser-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.19.0/phaser-arcade-physics.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/public/background/manette.png">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+ <!-- Feuille de style (CSS)-->
+<style>
+    body{
+        background:linear-gradient(to bottom right, #79a7d3,#8a307f);
+        font-family: 'Chalkduster', fantasy;
+        font-style: oblique;
+        text-align: center;
+    }
+
+    /* STYLE Bootstrap */
+    .btn-primary {
+        border-radius: 15px;
+        /*background: linear-gradient(#79a7d3,#8a307f) !important; */ 
+        background: linear-gradient(to top left, #8a307f,#79a7d3);
+    }
+
+    .navbar-expand-lg {
+        background-color: #6883bc;
+    }
+</style>
+<!------------------------------>
+
+<body>
+    <!-- Navbar Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="/public/background/manette.png" alt="" width="40" height="40" class="d-inline-block align-text-middle">
+                MINI JEUX</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="gamesDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Jeux
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/games/XO">XO</a></li>
+                            <li><a class="dropdown-item" href="/games/Sudoku">Sudoku</a></li>
+                            <li><a class="dropdown-item" href="/games/Snake">Snake</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1 style="color:#000000;"> </span><span class="emoji">&#128013</span> SNAKE </span><span class="emoji">&#128013</span></h1>  
+    <p style="color:#000000 ;"> Dirigez le serpent vers les pommes <span style="color:greenyellow">VERTES</span><span class="emoji">&#127823</span> et <span style="color:blue">BLEUES</span> ! attention à l'OBSTACLE et aux pommes <span style="color:red">ROUGES</span><span class="emoji">&#127822</span> ! </p>
+    <div id="phaser-game">
+    <!-- On appelle le fichier singlephase.js contenant le code javascript de configuration du jeu 
+        avec Phaser. #8a307f-->
+    <script src="/public/js/singlephase.js" type="module"></script>
+    </div>
+</body>
+</html>
+

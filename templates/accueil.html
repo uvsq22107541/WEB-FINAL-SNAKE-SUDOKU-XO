@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/accueil.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/public/background/manette.png">
+    <title>Accueil Mini JEUX</title>
+</head>
+
+<body>
+    <!-- Navbar Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+              <img src="/public/background/manette.png" alt="" width="40" height="40" class="d-inline-block align-text-middle">
+              MINI JEUX</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                      <a class="nav-link" href="/">Accueil</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="gamesDropdown" role="button"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                          Jeux
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li><a class="dropdown-item" href="/games/XO">XO</a></li>
+                          <li><a class="dropdown-item" href="/games/Sudoku">Sudoku</a></li>
+                          <li><a class="dropdown-item" href="/games/Snake">Snake</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
+
+    <div class="px-4 py-5 my-5 text-center" style="height: 80vh">
+        <h1 id="text" data-heading="Accueil">Accueil</h1>
+        <a href="#sec" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" id="btn">Explore</a>
+    </div>
+
+    <div class="sec" id="sec">
+        <h2>Bienvenue dans notre Monde de MINI JEUX</h2>
+        
+        <div class="card-group">
+          
+            <div class="card border-primary">
+              <div class="card-body text-primary">
+                <h5 class="card-title">X/O</h5>
+                <p class="card-text">
+                    Le morpion est un jeu de réflexion se pratiquant à deux joueurs au tour par tour 
+                    et dont le but est de créer le premier un alignement de 'X' ou de 'O' sur une grille.</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted"><a href="/games/XO">XO</a></small>
+              </div>
+            </div>
+
+              <div class="card border-primary">
+                <div class="card-body text-primary">
+                <h5 class="card-title">SUDOKU</h5>
+                <p class="card-text">
+                    Le but du jeu est de remplir la grille avec une série de chiffres (ou de lettres ou de symboles) 
+                    tous différents, qui ne se trouvent jamais plus d’une fois sur une même ligne, dans une même colonne 
+                    ou dans une même région (également appelée « bloc », « groupe », « secteur » ou « sous-grille »).</p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted"><a href="/games/Sudoku">Sudoku</a></small>
+              </div>
+            </div>
+
+              <div class="card border-primary">
+                <div class="card-body text-primary">
+                <h5 class="card-title">SNAKE</h5>
+                <p class="card-text">Le snake, de l'anglais signifiant « serpent », est un genre de jeu vidéo dans lequel le joueur dirige un serpent qui grandit et constitue ainsi lui-même un obstacle. </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted"><a href="/games/Snake">Snake</a></small>
+              </div>
+            </div>
+          </div>
+
+    </div>
+    
+    <script src="./jquery/jquery.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

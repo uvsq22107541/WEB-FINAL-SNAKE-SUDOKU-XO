@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+   
+    <head>
+        <meta charset="UTF-8"/> <!--   parameter to help set up the file-->
+         <title>Sudoku</title>
+         <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+         <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/public/css/Sudoku.css">
+        <link rel="shortcut icon" type="image/x-icon" href="/public/background/manette.png">
+         <script src="/public/js/Sudoku.js"></script>
+    </head>
+    <header> <!-- (header body footer)to seperate btw top middle bottom of the page -->
+            <!-- Navbar Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="/public/background/manette.png" alt="" width="40" height="40" class="d-inline-block align-text-middle">
+                MINI JEUX</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Accueil</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="gamesDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Jeux
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/games/XO">XO</a></li>
+                            <li><a class="dropdown-item" href="/games/Sudoku">Sudoku</a></li>
+                            <li><a class="dropdown-item" href="/games/Snake">Snake</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav> 
+
+        <h1>Sudoku</h1>
+        <div id="setup-game">
+          <div id="diff">
+              <h3>Choisir niveau : </h3>
+              <label><input id="diff-1" type="radio" name="diff" value="easy" checked>Facile</label> <!--is checked by default-->
+              <label><input id="diff-2" type="radio" name="diff" value="medium">Moyen</label>
+              <label><input id="diff-3" type="radio" name="diff" value="hard">Difficile</label>
+          </div>
+          <div id="time">
+            <h3>Choisir temps : </h3>
+            <label><input id="time-1" type="radio" name="time" value="three" checked>3 Min</label>
+            <label><input id="time-2" type="radio" name="time" value="five" >5 Min</label>
+            <label><input id="time-3" type="radio" name="time" value="ten" >10 Min</label>
+          </div>
+          <div id="theme">
+            <h3>Choisir theme : </h3>
+            <label><input id="theme-2" type="radio" name="theme" value="dark"checked>Clair</label>
+            <label><input id="theme-1" type="radio" name="theme" value="light" >Foncé</label>
+            
+          </div>
+      </div>
+      <button id="start-btn">Créer un nouveau jeu!</button>
+    </header>
+    <body>
+    
+        <div id="stats"> 
+            <p id="timer"></p> 
+            <p id =lives></p>
+        </div>
+        <div id="game">
+            <div id="board"></div> 
+            <div id="number-container" class="hidden"> 
+                <p id="one">1</p> 
+                <p id="two">2</p> 
+                <p id="three">3</p> 
+                <p id="four">4</p>
+                <p id="five">5</p>
+                <p id="six">6</p>
+                <p id="seven">7</p>
+                <p id="eight">8</p>
+                <p id="nine">9</p>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <p></p>
+    </footer>
+  
+</html>
+
